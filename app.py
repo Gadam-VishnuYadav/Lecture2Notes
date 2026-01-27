@@ -114,31 +114,29 @@ st.markdown("""
     /* Radio buttons */
     .stRadio > label {
         font-weight: 500;
-        color: #1f2937;
+        color: #1f2937 !important;
         font-size: 1rem;
     }
     
-    /* Radio button circles - white background */
-    .stRadio > div {
-        background-color: white;
-    }
-    
-    .stRadio > div > label > div[data-baseweb="radio"] > div {
-        background-color: white !important;
-        border: 2px solid rgba(220, 38, 38, 0.3) !important;
-    }
-    
-    .stRadio > div > label > div[data-baseweb="radio"] > div:first-child {
-        background-color: white !important;
-    }
-    
-    /* Selected radio button */
-    .stRadio > div > label > div[data-baseweb="radio"] > div[data-testid="stMarkdownContainer"] {
+    /* Radio button circles - white background, visible text */
+    .stRadio > div[role="radiogroup"] > label {
         color: #1f2937 !important;
+        background-color: transparent !important;
     }
     
-    /* Radio text visibility */
-    .stRadio label {
+    /* Radio button circle styling */
+    .stRadio > div[role="radiogroup"] > label > div:first-child {
+        background-color: white !important;
+        border: 2px solid rgba(220, 38, 38, 0.4) !important;
+    }
+    
+    /* Selected radio button - red fill */
+    .stRadio > div[role="radiogroup"] > label > div:first-child > div {
+        background-color: #dc2626 !important;
+    }
+    
+    /* Ensure text is always visible */
+    .stRadio span {
         color: #1f2937 !important;
     }
     
@@ -221,9 +219,17 @@ st.markdown("""
     
     /* Section headers */
     h2, h3 {
-        color: #1f2937;
-        font-weight: 700;
-        margin-bottom: 1rem;
+        color: #1f2937 !important;
+        font-weight: 700 !important;
+        margin-bottom: 1rem !important;
+        margin-top: 1rem !important;
+    }
+    
+    /* Ensure subheaders are visible */
+    .stMarkdown h2, .stMarkdown h3 {
+        color: #1f2937 !important;
+        visibility: visible !important;
+        display: block !important;
     }
     
     /* Progress bar */
@@ -240,6 +246,16 @@ st.markdown("""
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
     header {visibility: hidden;}
+    
+    /* Ensure columns display properly */
+    [data-testid="column"] {
+        background-color: transparent !important;
+    }
+    
+    /* Make sure all content is visible */
+    [data-testid="stVerticalBlock"] {
+        gap: 0.5rem;
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -405,8 +421,8 @@ with col2:
     st.subheader("Notes Preview")
     
     if st.session_state.notes_generated and st.session_state.generated_notes:
-        # Display notes in text area
-        st.text_area("", value=st.session_state.generated_notes, height=500, label_visibility="collapsed")
+        # Display notes in text area with proper height
+        st.text_area("", value=st.session_state.generated_notes, height=600, label_visibility="collapsed")
     else:
         st.info("Notes will appear here after generation.")
     
