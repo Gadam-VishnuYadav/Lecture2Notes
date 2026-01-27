@@ -28,16 +28,19 @@ Transform lecture audio into professional study notes using AI. Supports multipl
 
 ### Prerequisites
 - Python 3.8 or higher
-- FFmpeg (for audio processing)
+- **FFmpeg (Required)** - Must be installed first
 
-### Install FFmpeg
+### Step 1: Install FFmpeg
+
+FFmpeg is required for audio processing. Install it before running the application:
 
 **Windows:**
 ```bash
-# Using chocolatey
+# Using chocolatey (recommended)
 choco install ffmpeg
 
-# Or download from https://ffmpeg.org/download.html
+# Or download installer from https://ffmpeg.org/download.html
+# Add FFmpeg to your system PATH after installation
 ```
 
 **macOS:**
@@ -45,13 +48,18 @@ choco install ffmpeg
 brew install ffmpeg
 ```
 
-**Linux:**
+**Linux (Ubuntu/Debian):**
 ```bash
 sudo apt update
 sudo apt install ffmpeg
 ```
 
-### Setup
+**Verify Installation:**
+```bash
+ffmpeg -version
+```
+
+### Step 2: Clone and Setup Project
 
 1. Clone the repository:
 ```bash
