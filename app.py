@@ -15,6 +15,20 @@ from pdf_generator import create_pdf
 # Load API keys
 load_dotenv()
 
+# Check for ffmpeg
+if not shutil.which('ffmpeg'):
+    st.error("""
+    **FFmpeg is not installed or not in PATH.**
+    
+    Please install FFmpeg:
+    - **Windows**: Download from https://ffmpeg.org/download.html or use `choco install ffmpeg`
+    - **macOS**: Run `brew install ffmpeg`
+    - **Linux**: Run `sudo apt install ffmpeg`
+    
+    After installation, restart your terminal and try again.
+    """)
+    st.stop()
+
 # Page config
 st.set_page_config(page_title="Lecture2Notes", layout="wide", initial_sidebar_state="collapsed")
 
@@ -116,6 +130,30 @@ st.markdown("""
         font-weight: 500;
         color: #1f2937;
         font-size: 1rem;
+    }
+    
+    /* Radio button circles - white background */
+    .stRadio > div {
+        background-color: white;
+    }
+    
+    .stRadio > div > label > div[data-baseweb="radio"] > div {
+        background-color: white !important;
+        border: 2px solid rgba(220, 38, 38, 0.3) !important;
+    }
+    
+    .stRadio > div > label > div[data-baseweb="radio"] > div:first-child {
+        background-color: white !important;
+    }
+    
+    /* Selected radio button */
+    .stRadio > div > label > div[data-baseweb="radio"] > div[data-testid="stMarkdownContainer"] {
+        color: #1f2937 !important;
+    }
+    
+    /* Radio text visibility */
+    .stRadio label {
+        color: #1f2937 !important;
     }
     
     /* Text input */
