@@ -15,20 +15,6 @@ from pdf_generator import create_pdf
 # Load API keys
 load_dotenv()
 
-# Check for ffmpeg
-if not shutil.which('ffmpeg'):
-    st.error("""
-    **FFmpeg is not installed or not in PATH.**
-    
-    Please install FFmpeg:
-    - **Windows**: Download from https://ffmpeg.org/download.html or use `choco install ffmpeg`
-    - **macOS**: Run `brew install ffmpeg`
-    - **Linux**: Run `sudo apt install ffmpeg`
-    
-    After installation, restart your terminal and try again.
-    """)
-    st.stop()
-
 # Page config
 st.set_page_config(page_title="Lecture2Notes", layout="wide", initial_sidebar_state="collapsed")
 
