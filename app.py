@@ -124,38 +124,47 @@ st.markdown("""
         gap: 0.75rem;
     }
     
-    /* Radio button text labels - DARK AND VISIBLE */
+    /* Radio button text labels - FORCE DARK COLOR */
     .stRadio [role="radiogroup"] label {
-        color: #374151 !important;
+        color: #1f2937 !important;
         font-size: 0.95rem !important;
         font-weight: 500 !important;
+        padding: 0.25rem 0 !important;
     }
     
-    .stRadio [role="radiogroup"] label span {
-        color: #374151 !important;
+    /* All text inside radio labels */
+    .stRadio [role="radiogroup"] label span,
+    .stRadio [role="radiogroup"] label p,
+    .stRadio [role="radiogroup"] label div[data-testid="stMarkdownContainer"] {
+        color: #1f2937 !important;
     }
     
-    /* Radio button circles - CLEAN SIMPLE DESIGN */
+    /* Radio button circles - CLEAN DESIGN NOT SELECTED */
     .stRadio [role="radiogroup"] label > div:first-child {
         background-color: white !important;
-        border: 2px solid #d1d5db !important;
-        width: 20px !important;
-        height: 20px !important;
-        min-width: 20px !important;
-        min-height: 20px !important;
+        border: 2px solid #9ca3af !important;
+        width: 18px !important;
+        height: 18px !important;
+        min-width: 18px !important;
+        min-height: 18px !important;
     }
     
-    /* Radio button circles - selected state */
+    /* Radio button circles - CLEAR SELECTED STATE */
     .stRadio [role="radiogroup"] label[data-checked="true"] > div:first-child {
-        background-color: white !important;
+        background-color: #dc2626 !important;
         border: 2px solid #dc2626 !important;
     }
     
-    /* Inner dot when selected - SMALLER AND CLEANER */
-    .stRadio [role="radiogroup"] label > div:first-child > div {
-        background-color: #dc2626 !important;
-        width: 10px !important;
-        height: 10px !important;
+    /* Inner dot when selected - WHITE FOR CONTRAST */
+    .stRadio [role="radiogroup"] label[data-checked="true"] > div:first-child > div {
+        background-color: white !important;
+        width: 8px !important;
+        height: 8px !important;
+    }
+    
+    /* Hide inner dot when NOT selected */
+    .stRadio [role="radiogroup"] label:not([data-checked="true"]) > div:first-child > div {
+        display: none !important;
     }
     
     /* Text input */
