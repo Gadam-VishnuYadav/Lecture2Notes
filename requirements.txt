@@ -1,0 +1,10 @@
+streamlit
+python-dotenv
+ffmpeg-python
+sounddevice
+scipy
+numpy
+torch
+openai-whisper
+groq
+reportlab
