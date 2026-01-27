@@ -111,33 +111,38 @@ st.markdown("""
         padding: 1rem;
     }
     
-    /* Radio buttons */
+    /* Radio buttons - ensure text is visible */
     .stRadio > label {
         font-weight: 500;
         color: #1f2937 !important;
         font-size: 1rem;
     }
     
-    /* Radio button circles - white background, visible text */
-    .stRadio > div[role="radiogroup"] > label {
+    /* Radio button text labels - MUST BE VISIBLE */
+    .stRadio [role="radiogroup"] label {
         color: #1f2937 !important;
-        background-color: transparent !important;
+        font-size: 0.95rem !important;
     }
     
-    /* Radio button circle styling */
-    .stRadio > div[role="radiogroup"] > label > div:first-child {
+    .stRadio [role="radiogroup"] label span {
+        color: #1f2937 !important;
+    }
+    
+    /* Radio button circles - white with black border (not selected) */
+    .stRadio [role="radiogroup"] label > div:first-child {
         background-color: white !important;
-        border: 2px solid rgba(220, 38, 38, 0.4) !important;
+        border: 2px solid #000000 !important;
     }
     
-    /* Selected radio button - red fill */
-    .stRadio > div[role="radiogroup"] > label > div:first-child > div {
+    /* Radio button circles - white with red border (selected) */
+    .stRadio [role="radiogroup"] label[data-checked="true"] > div:first-child {
+        background-color: white !important;
+        border: 2px solid #dc2626 !important;
+    }
+    
+    /* Inner dot when selected - red */
+    .stRadio [role="radiogroup"] label > div:first-child > div {
         background-color: #dc2626 !important;
-    }
-    
-    /* Ensure text is always visible */
-    .stRadio span {
-        color: #1f2937 !important;
     }
     
     /* Text input */
