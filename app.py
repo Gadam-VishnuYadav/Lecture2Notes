@@ -111,38 +111,51 @@ st.markdown("""
         padding: 1rem;
     }
     
-    /* Radio buttons - ensure text is visible */
+    /* Radio buttons - CLEAN AND SIMPLE */
     .stRadio > label {
-        font-weight: 500;
+        font-weight: 600;
         color: #1f2937 !important;
         font-size: 1rem;
+        margin-bottom: 0.5rem;
     }
     
-    /* Radio button text labels - MUST BE VISIBLE */
+    /* Radio button container spacing */
+    .stRadio [role="radiogroup"] {
+        gap: 0.75rem;
+    }
+    
+    /* Radio button text labels - DARK AND VISIBLE */
     .stRadio [role="radiogroup"] label {
-        color: #1f2937 !important;
+        color: #374151 !important;
         font-size: 0.95rem !important;
+        font-weight: 500 !important;
     }
     
     .stRadio [role="radiogroup"] label span {
-        color: #1f2937 !important;
+        color: #374151 !important;
     }
     
-    /* Radio button circles - white with black border (not selected) */
+    /* Radio button circles - CLEAN SIMPLE DESIGN */
     .stRadio [role="radiogroup"] label > div:first-child {
         background-color: white !important;
-        border: 2px solid #000000 !important;
+        border: 2px solid #d1d5db !important;
+        width: 20px !important;
+        height: 20px !important;
+        min-width: 20px !important;
+        min-height: 20px !important;
     }
     
-    /* Radio button circles - white with red border (selected) */
+    /* Radio button circles - selected state */
     .stRadio [role="radiogroup"] label[data-checked="true"] > div:first-child {
         background-color: white !important;
         border: 2px solid #dc2626 !important;
     }
     
-    /* Inner dot when selected - red */
+    /* Inner dot when selected - SMALLER AND CLEANER */
     .stRadio [role="radiogroup"] label > div:first-child > div {
         background-color: #dc2626 !important;
+        width: 10px !important;
+        height: 10px !important;
     }
     
     /* Text input */
@@ -156,6 +169,13 @@ st.markdown("""
     .stTextInput > div > div > input:focus {
         border-color: #dc2626;
         box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+    }
+    
+    /* Text input label */
+    .stTextInput > label {
+        color: #1f2937 !important;
+        font-weight: 600 !important;
+        font-size: 1rem !important;
     }
     
     /* Text area - FORCE WHITE BACKGROUND */
@@ -222,7 +242,7 @@ st.markdown("""
         transform: translateY(-2px);
     }
     
-    /* Section headers */
+    /* Section headers - DARK AND VISIBLE */
     h2, h3 {
         color: #1f2937 !important;
         font-weight: 700 !important;
