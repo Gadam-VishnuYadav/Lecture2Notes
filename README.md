@@ -1,96 +1,140 @@
+
+---
+
 # Lecture2Notes
 
-Transform lecture audio into professional study notes using AI. Supports multiple languages and generates well-structured PDF notes automatically.
+Lecture2Notes is an AI-powered tool that converts lecture audio into clear, well-structured study notes. It supports multiple languages, handles real classroom audio, and produces clean, exam-ready PDF notes automatically.
+
+---
 
 ## Features
 
-- **Multi-Language Support**: English, Telugu, Hindi, and mixed language lectures
-- **AI-Powered Notes**: Generates detailed, structured academic notes using Groq AI
-- **Professional PDF Output**: Clean, formatted PDFs ready for studying
-- **Audio Preprocessing**: Automatic noise reduction and optimization
-- **Web Interface**: Easy-to-use Streamlit web application
-- **Command Line Tool**: Terminal version with live recording support
+* **Multi-Language Lectures**
+  Supports English, Telugu, Hindi, and mixed-language lectures.
+
+* **AI-Based Note Generation**
+  Uses Groq AI to generate detailed, structured academic notes instead of short summaries.
+
+* **Professional PDF Output**
+  Automatically creates clean, properly formatted PDFs suitable for studying and revision.
+
+* **Audio Preprocessing**
+  Improves transcription accuracy using noise reduction and audio optimization.
+
+* **Web Application**
+  Simple and intuitive Streamlit-based interface for uploading audio and generating notes.
+
+* **Command-Line Tool**
+  Terminal version with support for both file uploads and live lecture recording.
+
+---
 
 ## Demo
 
 ### Web Interface (Streamlit)
-- Upload audio files
-- Select lecture and notes language
-- Generate AI-powered notes
-- Download professional PDF
 
-### Terminal Version
-- Upload audio files OR record live lectures
-- Multi-language transcription
-- Automated notes generation
+* Upload lecture audio files
+* Select lecture language
+* Generate AI-based notes
+* Download a professional PDF
+
+### Command-Line Version
+
+* Upload existing audio files or record live lectures
+* Automatic multi-language transcription
+* Fully automated notes generation
+
+---
 
 ## Installation
 
 ### Prerequisites
-- Python 3.8 or higher
-- **FFmpeg (Required)** - Must be installed first
+
+* Python 3.8 or higher
+* **FFmpeg (Required)** – must be installed before running the project
+
+---
 
 ### Step 1: Install FFmpeg
 
-FFmpeg is required for audio processing. Install it before running the application:
+FFmpeg is required for audio preprocessing.
 
-**Windows:**
+**Windows**
+
 ```bash
-# Using chocolatey (recommended)
+# Using Chocolatey (recommended)
 choco install ffmpeg
 
-# Or download installer from https://ffmpeg.org/download.html
-# Add FFmpeg to your system PATH after installation
+# Or download from https://ffmpeg.org/download.html
+# Make sure FFmpeg is added to PATH
 ```
 
-**macOS:**
+**macOS**
+
 ```bash
 brew install ffmpeg
 ```
 
-**Linux (Ubuntu/Debian):**
+**Linux (Ubuntu / Debian)**
+
 ```bash
 sudo apt update
 sudo apt install ffmpeg
 ```
 
-**Verify Installation:**
+**Verify Installation**
+
 ```bash
 ffmpeg -version
 ```
 
-### Step 2: Clone and Setup Project
+---
+
+### Step 2: Clone and Set Up the Project
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/yourusername/lecture2notes.git
 cd lecture2notes
 ```
 
-2. Create virtual environment:
+2. Create a virtual environment:
+
 ```bash
 python -m venv venv
+```
 
-# Activate virtual environment
-# Windows:
+Activate it:
+
+* **Windows**
+
+```bash
 venv\Scripts\activate
-# macOS/Linux:
+```
+
+* **macOS / Linux**
+
+```bash
 source venv/bin/activate
 ```
 
 3. Install dependencies:
+
 ```bash
 pip install -r requirements.txt
 ```
 
-4. Configure API key:
-```bash
-# Copy the example env file
-cp .env.example .env
+4. Configure the API key:
 
-# Edit .env and add your Groq API key
-# Get free API key from: https://console.groq.com/keys
+```bash
+cp .env.example .env
 ```
+
+Edit `.env` and add your Groq API key.
+Get a free key from: [https://console.groq.com/keys](https://console.groq.com/keys)
+
+---
 
 ## Usage
 
@@ -100,67 +144,97 @@ cp .env.example .env
 streamlit run app.py
 ```
 
-Then open your browser to `http://localhost:8501`
+Open your browser at:
+`http://localhost:8501`
 
-1. Upload your lecture audio file (WAV, MP3, MP4, M4A, OGG)
+Steps:
+
+1. Upload a lecture audio file (WAV, MP3, MP4, M4A, OGG)
 2. Select lecture language
-3. Enter topic name
-4. Click "Generate Notes"
+3. Enter the topic name
+4. Click **Generate Notes**
 5. Download the generated PDF
 
-### Command Line Interface
+---
+
+### Command-Line Interface
 
 ```bash
 python main.py
 ```
 
 Options:
-1. **Upload Audio File**: Process existing audio files
-2. **Live Recording**: Record lecture in real-time (press ENTER to stop)
+
+1. Upload an existing audio file
+2. Record a lecture live (press **ENTER** to stop recording)
+
+---
 
 ## Project Structure
 
 ```
 lecture2notes/
 ├── app.py                 # Streamlit web interface
-├── main.py                # Command line interface
+├── main.py                # Command-line interface
 ├── audio_utils.py         # Audio preprocessing and chunking
 ├── transcriber.py         # Whisper-based transcription
 ├── semantic_cleaner.py    # Transcript cleaning
 ├── notes_generator.py     # AI notes generation (Groq)
 ├── pdf_generator.py       # PDF creation
-├── live_recorder.py       # Live audio recording
+├── live_recorder.py       # Live audio recording (CLI)
 ├── requirements.txt       # Python dependencies
-├── .env.example          # Environment variables template
-└── README.md             # Documentation
+├── .env.example           # Environment variable template
+└── README.md              # Documentation
 ```
+
+---
 
 ## How It Works
 
-1. **Audio Preprocessing**: Converts audio to optimal format (16kHz, mono, noise-reduced)
-2. **Chunking**: Splits long audio into manageable chunks
-3. **Transcription**: Uses OpenAI Whisper for accurate multi-language transcription
-4. **Cleaning**: Removes filler words and formatting issues
-5. **AI Notes Generation**: Groq LLaMA 3.1 creates structured academic notes
-6. **PDF Creation**: Generates professional PDF with proper formatting
+1. **Audio Preprocessing**
+   Converts audio to a clean 16kHz mono format with noise reduction.
+
+2. **Chunking**
+   Splits long audio into smaller chunks for better transcription.
+
+3. **Transcription**
+   Uses OpenAI Whisper for accurate multi-language speech-to-text.
+
+4. **Cleaning**
+   Removes filler words and broken sentences without changing meaning.
+
+5. **AI Notes Generation**
+   Groq LLaMA 3.1 generates detailed, structured academic notes.
+
+6. **PDF Creation**
+   Notes are converted into a professionally formatted PDF.
+
+---
 
 ## Supported Languages
 
-- **Transcription**: English, Telugu, Hindi, Mixed Languages
-- **Notes Output**: English
+* **Transcription**: English, Telugu, Hindi, Mixed Languages
+* **Notes Output**: English
+
+---
 
 ## Configuration
 
 ### Notes Length
 
-The AI automatically adjusts notes length based on lecture duration:
-- ≤10 minutes: ~1500 words
-- ≤30 minutes: ~3000 words
-- >30 minutes: ~4500+ words
+Notes length is automatically adjusted based on lecture duration:
 
-### Audio Formats
+* Up to 10 minutes → ~1500 words
+* Up to 30 minutes → ~3000 words
+* More than 30 minutes → ~4500+ words
 
-Supported formats: WAV, MP3, MP4, M4A, OGG
+---
+
+### Supported Audio Formats
+
+WAV, MP3, MP4, M4A, OGG
+
+---
 
 ## Output Structure
 
@@ -176,72 +250,96 @@ outputs/
         └── Topic_Name.pdf
 ```
 
+---
+
 ## Requirements
 
-- Python 3.8+
-- FFmpeg
-- CUDA-compatible GPU (optional, for faster transcription)
-- Groq API key (free)
-
-## API Key Setup
-
-1. Visit [Groq Console](https://console.groq.com/keys)
-2. Create a free account
-3. Generate an API key
-4. Add to `.env` file:
-   ```
-   GROQ_API_KEY=your_api_key_here
-   ```
-
-## Troubleshooting
-
-### FFmpeg not found
-- Ensure FFmpeg is installed and in your system PATH
-- Restart your terminal after installation
-
-### CUDA errors
-- If you don't have a GPU, Whisper will automatically use CPU
-- GPU provides faster transcription but is not required
-
-### API errors
-- Verify your Groq API key is correct in `.env`
-- Check your internet connection
-- Ensure you haven't exceeded API rate limits
-
-### Audio quality issues
-- Use high-quality audio recordings
-- Minimize background noise
-- Ensure speaker volume is adequate
-
-## Performance
-
-- **CPU Mode**: ~5-10 minutes per hour of audio
-- **GPU Mode**: ~1-2 minutes per hour of audio (RTX 3050 or better)
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## Acknowledgments
-
-- OpenAI Whisper for transcription
-- Groq for AI notes generation
-- Streamlit for web interface
-- ReportLab for PDF generation
-
-## Support
-
-For issues, questions, or suggestions, please open an issue on GitHub.
-
-## Roadmap
-
-- [ ] More output languages
-- [ ] Custom note templates
-- [ ] Batch processing
-- [ ] Video file support
-- [ ] Cloud deployment
-- [ ] Mobile app
+* Python 3.8 or higher
+* FFmpeg
+* Groq API key (free)
+* CUDA-compatible GPU (optional, improves transcription speed)
 
 ---
 
-**Note**: Live recording is only available in the command-line version (`main.py`). The web interface (`app.py`) supports file uploads only.
+## API Key Setup
+
+1. Visit [https://console.groq.com/keys](https://console.groq.com/keys)
+2. Create an account
+3. Generate an API key
+4. Add it to `.env`:
+
+```
+GROQ_API_KEY=your_api_key_here
+```
+
+---
+
+## Troubleshooting
+
+### FFmpeg Not Found
+
+* Ensure FFmpeg is installed and added to PATH
+* Restart your terminal after installation
+
+### CUDA Errors
+
+* Whisper automatically falls back to CPU if no GPU is available
+
+### API Errors
+
+* Check that your Groq API key is valid
+* Ensure you have internet access
+* Confirm you are within API limits
+
+### Audio Quality Issues
+
+* Use clear recordings with minimal background noise
+* Ensure speaker volume is sufficient
+
+---
+
+## Performance
+
+* **CPU Mode**: ~5–10 minutes per hour of audio
+* **GPU Mode**: ~1–2 minutes per hour (RTX 3050 or better)
+
+---
+
+## Contributing
+
+Contributions are welcome.
+Feel free to open an issue or submit a pull request.
+
+---
+
+## Acknowledgments
+
+* OpenAI Whisper – speech-to-text
+* Groq – AI note generation
+* Streamlit – web interface
+* ReportLab – PDF generation
+
+---
+
+## Roadmap
+
+* [ ] Additional output languages
+* [ ] Custom note templates
+* [ ] Batch processing
+* [ ] Video file support
+* [ ] Cloud deployment
+* [ ] Mobile application
+
+---
+
+**Note:**
+Live recording is available only in the command-line version (`main.py`).
+The web interface (`app.py`) supports file uploads only.
+
+---
+
+If you want, I can now:
+
+* Make this **resume-friendly**
+* Shorten it for **GitHub front page**
+* Or rewrite it in **academic / startup / student tone**
