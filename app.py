@@ -129,6 +129,32 @@ st.markdown("""
         margin-top: 0.5rem !important;
     }
     
+    /* Uploaded file name - MAKE VERY VISIBLE */
+    .stFileUploader div[data-testid="stFileUploaderFile"] {
+        background-color: #f3f4f6 !important;
+        border: 1px solid #d1d5db !important;
+        border-radius: 6px !important;
+        padding: 0.5rem !important;
+        margin-top: 0.5rem !important;
+    }
+    
+    .stFileUploader div[data-testid="stFileUploaderFile"] div,
+    .stFileUploader div[data-testid="stFileUploaderFile"] span {
+        color: #1f2937 !important;
+        font-weight: 500 !important;
+    }
+    
+    /* File name text specifically */
+    .stFileUploader [data-testid="stFileUploaderFileName"] {
+        color: #1f2937 !important;
+        font-weight: 600 !important;
+    }
+    
+    /* File delete button */
+    .stFileUploader button[kind="icon"] {
+        color: #ef4444 !important;
+    }
+    
     /* Radio buttons - CLEAN AND SIMPLE */
     .stRadio > label {
         font-weight: 600;
@@ -139,7 +165,7 @@ st.markdown("""
     
     /* Radio button container spacing */
     .stRadio [role="radiogroup"] {
-        gap: 1rem;
+        gap: 0.5rem;
     }
     
     /* Radio button text labels - FORCE DARK COLOR */
@@ -147,9 +173,11 @@ st.markdown("""
         color: #1f2937 !important;
         font-size: 0.95rem !important;
         font-weight: 500 !important;
-        padding: 0.25rem 0 !important;
+        padding: 0.5rem 0.75rem !important;
         display: flex !important;
         align-items: center !important;
+        border-radius: 6px !important;
+        transition: all 0.2s ease !important;
     }
     
     /* All text inside radio labels */
@@ -159,7 +187,7 @@ st.markdown("""
         color: #1f2937 !important;
     }
     
-    /* Radio button circles - LARGER AND MORE VISIBLE */
+    /* Radio button circles - NOT SELECTED */
     .stRadio [role="radiogroup"] label > div:first-child {
         background-color: white !important;
         border: 2px solid #d1d5db !important;
@@ -170,11 +198,17 @@ st.markdown("""
         margin-right: 0.5rem !important;
     }
     
+    /* Radio button - SELECTED STATE WITH BACKGROUND HIGHLIGHT */
+    .stRadio [role="radiogroup"] label[data-checked="true"] {
+        background-color: rgba(220, 38, 38, 0.08) !important;
+        font-weight: 600 !important;
+    }
+    
     /* Radio button circles - BOLD RED WHEN SELECTED */
     .stRadio [role="radiogroup"] label[data-checked="true"] > div:first-child {
         background-color: #dc2626 !important;
         border: 3px solid #dc2626 !important;
-        box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.2) !important;
+        box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.15) !important;
     }
     
     /* Inner dot when selected - LARGER WHITE DOT */
@@ -189,9 +223,10 @@ st.markdown("""
         display: none !important;
     }
     
-    /* Make selected option text bolder */
-    .stRadio [role="radiogroup"] label[data-checked="true"] {
-        font-weight: 600 !important;
+    /* Selected text color - make it red too */
+    .stRadio [role="radiogroup"] label[data-checked="true"] span,
+    .stRadio [role="radiogroup"] label[data-checked="true"] p {
+        color: #dc2626 !important;
     }
     
     /* Text input */
