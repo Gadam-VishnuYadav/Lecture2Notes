@@ -260,6 +260,3 @@ GROQ_API_KEY=your_api_key_here
 Live recording is available only in the command-line version (`main.py`).
 The web interface (`app.py`) supports file uploads only.
 
-
-* make this **even shorter for the GitHub homepage**, or
-* align it perfectly with your **new folder structure** 👌
