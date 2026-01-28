@@ -173,11 +173,12 @@ st.markdown("""
         color: #1f2937 !important;
         font-size: 0.95rem !important;
         font-weight: 500 !important;
-        padding: 0.5rem 0.75rem !important;
+        padding: 0.75rem 1rem !important;
         display: flex !important;
         align-items: center !important;
-        border-radius: 6px !important;
+        border-radius: 8px !important;
         transition: all 0.2s ease !important;
+        border: 2px solid transparent !important;
     }
     
     /* All text inside radio labels */
@@ -191,31 +192,35 @@ st.markdown("""
     .stRadio [role="radiogroup"] label > div:first-child {
         background-color: white !important;
         border: 2px solid #d1d5db !important;
-        width: 20px !important;
-        height: 20px !important;
-        min-width: 20px !important;
-        min-height: 20px !important;
-        margin-right: 0.5rem !important;
+        width: 22px !important;
+        height: 22px !important;
+        min-width: 22px !important;
+        min-height: 22px !important;
+        margin-right: 0.75rem !important;
     }
     
-    /* Radio button - SELECTED STATE WITH BACKGROUND HIGHLIGHT */
+    /* Radio button - STRONG SELECTED STATE */
     .stRadio [role="radiogroup"] label[data-checked="true"] {
-        background-color: rgba(220, 38, 38, 0.08) !important;
-        font-weight: 600 !important;
+        background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%) !important;
+        border: 2px solid #dc2626 !important;
+        font-weight: 700 !important;
+        box-shadow: 0 2px 8px rgba(220, 38, 38, 0.3) !important;
     }
     
-    /* Radio button circles - BOLD RED WHEN SELECTED */
+    /* Radio button circles - VERY VISIBLE RED WHEN SELECTED */
     .stRadio [role="radiogroup"] label[data-checked="true"] > div:first-child {
         background-color: #dc2626 !important;
         border: 3px solid #dc2626 !important;
-        box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.15) !important;
+        box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.3) !important;
+        width: 22px !important;
+        height: 22px !important;
     }
     
-    /* Inner dot when selected - LARGER WHITE DOT */
+    /* Inner dot when selected - BIG WHITE DOT */
     .stRadio [role="radiogroup"] label[data-checked="true"] > div:first-child > div {
         background-color: white !important;
-        width: 10px !important;
-        height: 10px !important;
+        width: 12px !important;
+        height: 12px !important;
     }
     
     /* Hide inner dot when NOT selected */
@@ -223,10 +228,12 @@ st.markdown("""
         display: none !important;
     }
     
-    /* Selected text color - make it red too */
+    /* Selected text color - DARK RED */
     .stRadio [role="radiogroup"] label[data-checked="true"] span,
-    .stRadio [role="radiogroup"] label[data-checked="true"] p {
-        color: #dc2626 !important;
+    .stRadio [role="radiogroup"] label[data-checked="true"] p,
+    .stRadio [role="radiogroup"] label[data-checked="true"] div[data-testid="stMarkdownContainer"] {
+        color: #991b1b !important;
+        font-weight: 700 !important;
     }
     
     /* Text input */
