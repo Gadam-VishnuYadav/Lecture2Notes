@@ -18,7 +18,7 @@ load_dotenv()
 # Page config
 st.set_page_config(page_title="Lecture2Notes", layout="wide", initial_sidebar_state="collapsed")
 
-# Custom CSS - Premium Red-White-Glass Design
+# Custom CSS with CORRECT Streamlit selectors
 st.markdown("""
 <style>
     /* Main background */
@@ -26,13 +26,12 @@ st.markdown("""
         background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
     }
     
-    /* Remove default padding */
     .block-container {
         padding-top: 1rem;
         padding-bottom: 0rem;
     }
     
-    /* Header styling - REDUCED SIZE */
+    /* Header styling */
     .main-header {
         background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
         padding: 1.2rem 2rem;
@@ -57,33 +56,7 @@ st.markdown("""
         font-weight: 400;
     }
     
-    /* Glass effect panels */
-    .glass-panel {
-        background: rgba(255, 255, 255, 0.85);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(220, 38, 38, 0.1);
-        border-radius: 12px;
-        padding: 1.5rem;
-        margin-bottom: 1.5rem;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
-    }
-    
-    /* HIDE EMPTY WHITE BOXES */
-    div[data-testid="stVerticalBlock"] > div:empty {
-        display: none !important;
-    }
-    
-    /* Remove extra spacing */
-    .element-container:has(> div:empty) {
-        display: none !important;
-    }
-    
-    /* Compact sections */
-    section[data-testid="stSidebar"] {
-        display: none;
-    }
-    
-    /* Button styling */
+    /* Buttons */
     .stButton > button {
         background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
         color: white;
@@ -99,7 +72,6 @@ st.markdown("""
     
     .stButton > button:hover {
         background: linear-gradient(135deg, #991b1b 0%, #7f1d1d 100%);
-        box-shadow: 0 6px 12px rgba(220, 38, 38, 0.3);
         transform: translateY(-2px);
     }
     
@@ -111,129 +83,92 @@ st.markdown("""
         padding: 1rem;
     }
     
-    /* File uploader text - MAKE VISIBLE */
     .stFileUploader label,
     .stFileUploader small,
-    .stFileUploader div[data-testid="stMarkdownContainer"] {
+    .stFileUploader div {
         color: #4b5563 !important;
     }
     
-    /* File uploader inner text */
-    .stFileUploader section {
-        color: #4b5563 !important;
-    }
-    
-    .stFileUploader section small {
-        color: #6b7280 !important;
-        display: block !important;
-        margin-top: 0.5rem !important;
-    }
-    
-    /* Uploaded file name - MAKE VERY VISIBLE */
     .stFileUploader div[data-testid="stFileUploaderFile"] {
         background-color: #f3f4f6 !important;
         border: 1px solid #d1d5db !important;
         border-radius: 6px !important;
         padding: 0.5rem !important;
-        margin-top: 0.5rem !important;
     }
     
     .stFileUploader div[data-testid="stFileUploaderFile"] div,
     .stFileUploader div[data-testid="stFileUploaderFile"] span {
         color: #1f2937 !important;
-        font-weight: 500 !important;
-    }
-    
-    /* File name text specifically */
-    .stFileUploader [data-testid="stFileUploaderFileName"] {
-        color: #1f2937 !important;
         font-weight: 600 !important;
     }
     
-    /* File delete button */
-    .stFileUploader button[kind="icon"] {
-        color: #ef4444 !important;
-    }
+    /* ========== RADIO BUTTONS - SOLID RED BOX, NO CIRCLE, CENTERED TEXT ========== */
     
-    /* Radio buttons - CLEAN AND SIMPLE */
+    /* Radio button label (header) */
     .stRadio > label {
-        font-weight: 600;
+        font-weight: 600 !important;
         color: #1f2937 !important;
-        font-size: 1rem;
-        margin-bottom: 0.5rem;
+        font-size: 1.1rem !important;
+        margin-bottom: 0.75rem !important;
     }
     
-    /* Radio button container spacing */
-    .stRadio [role="radiogroup"] {
-        gap: 0.5rem;
+    /* Container for all radio options */
+    div[data-testid="stVerticalBlock"]:has(> div > div[data-testid="stMarkdownContainer"]) .stRadio {
+        width: 100%;
     }
     
-    /* Radio button text labels - FORCE DARK COLOR */
-    .stRadio [role="radiogroup"] label {
-        color: #1f2937 !important;
-        font-size: 0.95rem !important;
-        font-weight: 500 !important;
-        padding: 0.75rem 1rem !important;
+    /* Each radio button container */
+    .stRadio > div {
+        gap: 0.5rem !important;
+    }
+    
+    /* Radio button wrapper - DEFAULT (not selected) */
+    div[role="radiogroup"] > label {
+        background-color: white !important;
+        border: 2px solid #e5e7eb !important;
+        border-radius: 8px !important;
+        padding: 12px 16px !important;
+        cursor: pointer !important;
+        transition: all 0.2s ease !important;
         display: flex !important;
         align-items: center !important;
-        border-radius: 8px !important;
-        transition: all 0.2s ease !important;
-        border: 2px solid transparent !important;
+        justify-content: center !important;
+        margin-bottom: 0.5rem !important;
     }
     
-    /* All text inside radio labels */
-    .stRadio [role="radiogroup"] label span,
-    .stRadio [role="radiogroup"] label p,
-    .stRadio [role="radiogroup"] label div[data-testid="stMarkdownContainer"] {
-        color: #1f2937 !important;
+    /* Hover state */
+    div[role="radiogroup"] > label:hover {
+        border-color: #fca5a5 !important;
+        background-color: #fef2f2 !important;
     }
     
-    /* Radio button circles - NOT SELECTED */
-    .stRadio [role="radiogroup"] label > div:first-child {
-        background-color: white !important;
-        border: 2px solid #d1d5db !important;
-        width: 22px !important;
-        height: 22px !important;
-        min-width: 22px !important;
-        min-height: 22px !important;
-        margin-right: 0.75rem !important;
-    }
-    
-    /* Radio button - STRONG SELECTED STATE */
-    .stRadio [role="radiogroup"] label[data-checked="true"] {
-        background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%) !important;
-        border: 2px solid #dc2626 !important;
-        font-weight: 700 !important;
-        box-shadow: 0 2px 8px rgba(220, 38, 38, 0.3) !important;
-    }
-    
-    /* Radio button circles - VERY VISIBLE RED WHEN SELECTED */
-    .stRadio [role="radiogroup"] label[data-checked="true"] > div:first-child {
+    /* SELECTED STATE - SOLID RED BOX, NO BORDER */
+    div[role="radiogroup"] > label:has(input[type="radio"]:checked) {
         background-color: #dc2626 !important;
-        border: 3px solid #dc2626 !important;
-        box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.3) !important;
-        width: 22px !important;
-        height: 22px !important;
+        border: none !important;
+        padding: 14px 18px !important;
+        box-shadow: 0 4px 12px rgba(220, 38, 38, 0.4) !important;
     }
     
-    /* Inner dot when selected - BIG WHITE DOT */
-    .stRadio [role="radiogroup"] label[data-checked="true"] > div:first-child > div {
-        background-color: white !important;
-        width: 12px !important;
-        height: 12px !important;
-    }
-    
-    /* Hide inner dot when NOT selected */
-    .stRadio [role="radiogroup"] label:not([data-checked="true"]) > div:first-child > div {
+    /* HIDE Radio circle completely */
+    div[role="radiogroup"] > label > div:first-child {
         display: none !important;
     }
     
-    /* Selected text color - DARK RED */
-    .stRadio [role="radiogroup"] label[data-checked="true"] span,
-    .stRadio [role="radiogroup"] label[data-checked="true"] p,
-    .stRadio [role="radiogroup"] label[data-checked="true"] div[data-testid="stMarkdownContainer"] {
-        color: #991b1b !important;
+    /* Text - default (gray) - CENTERED */
+    div[role="radiogroup"] > label > div:last-child {
+        color: #374151 !important;
+        font-size: 15px !important;
+        font-weight: 500 !important;
+        text-align: center !important;
+        width: 100% !important;
+    }
+    
+    /* Text - SELECTED (WHITE on red background) - CENTERED */
+    div[role="radiogroup"] > label:has(input[type="radio"]:checked) > div:last-child {
+        color: white !important;
         font-weight: 700 !important;
+        text-align: center !important;
     }
     
     /* Text input */
@@ -249,14 +184,12 @@ st.markdown("""
         box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
     }
     
-    /* Text input label */
     .stTextInput > label {
         color: #1f2937 !important;
         font-weight: 600 !important;
-        font-size: 1rem !important;
     }
     
-    /* Text area - FORCE WHITE BACKGROUND */
+    /* Text area */
     .stTextArea > div > div > textarea {
         border: 2px solid rgba(220, 38, 38, 0.2) !important;
         border-radius: 8px !important;
@@ -265,17 +198,7 @@ st.markdown("""
         color: #1f2937 !important;
     }
     
-    .stTextArea textarea {
-        background-color: #ffffff !important;
-        color: #1f2937 !important;
-    }
-    
-    textarea {
-        background-color: #ffffff !important;
-        color: #1f2937 !important;
-    }
-    
-    /* Success/Error messages */
+    /* Messages */
     .stSuccess {
         background: rgba(34, 197, 94, 0.1);
         border-left: 4px solid #22c55e;
@@ -311,28 +234,18 @@ st.markdown("""
         font-size: 1rem;
         width: 100%;
         box-shadow: 0 4px 6px rgba(5, 150, 105, 0.2);
-        transition: all 0.3s ease;
     }
     
     .stDownloadButton > button:hover {
         background: linear-gradient(135deg, #047857 0%, #065f46 100%);
-        box-shadow: 0 6px 12px rgba(5, 150, 105, 0.3);
         transform: translateY(-2px);
     }
     
-    /* Section headers - DARK AND VISIBLE */
+    /* Headers */
     h2, h3 {
         color: #1f2937 !important;
         font-weight: 700 !important;
         margin-bottom: 1rem !important;
-        margin-top: 1rem !important;
-    }
-    
-    /* Ensure subheaders are visible */
-    .stMarkdown h2, .stMarkdown h3 {
-        color: #1f2937 !important;
-        visibility: visible !important;
-        display: block !important;
     }
     
     /* Progress bar */
@@ -340,25 +253,11 @@ st.markdown("""
         background-color: #dc2626;
     }
     
-    /* Spinner */
-    .stSpinner > div {
-        border-top-color: #dc2626 !important;
-    }
-    
-    /* Hide streamlit branding */
+    /* Hide branding */
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
     header {visibility: hidden;}
-    
-    /* Ensure columns display properly */
-    [data-testid="column"] {
-        background-color: transparent !important;
-    }
-    
-    /* Make sure all content is visible */
-    [data-testid="stVerticalBlock"] {
-        gap: 0.5rem;
-    }
+    section[data-testid="stSidebar"] {display: none;}
 </style>
 """, unsafe_allow_html=True)
 
@@ -482,23 +381,17 @@ def process_audio(audio_path, topic_name, output_language):
 col1, col2 = st.columns([1, 2])
 
 with col1:
-    # Input method
     st.subheader("Choose File")
-    
     audio_file = st.file_uploader("", type=['wav', 'mp3', 'mp4', 'm4a', 'ogg'], label_visibility="collapsed")
     
-    # Language selection
     st.subheader("Choose Lecture Language")
-    lecture_lang_options = ["ENGLISH", "TELUGU", "HINDI", "BLENDED LANGUAGE"]
-    lecture_lang = st.radio("", lecture_lang_options, label_visibility="collapsed")
+    lecture_lang = st.radio("", ["ENGLISH", "TELUGU", "HINDI", "BLENDED LANGUAGE"], label_visibility="collapsed", key="lecture")
     
     st.subheader("Choose Notes Language")
-    notes_lang = st.radio("", ["ENGLISH"], label_visibility="collapsed")
+    notes_lang = st.radio("", ["ENGLISH"], label_visibility="collapsed", key="notes")
     
-    # Topic input - NO GLASS PANEL
     topic_name = st.text_input("Topic Name", placeholder="Enter topic name...")
     
-    # Generate button
     if st.button("Generate Notes"):
         if not os.getenv("GROQ_API_KEY"):
             st.error("GROQ_API_KEY is missing. Please add it to your .env file.")
@@ -508,7 +401,6 @@ with col1:
             st.warning("Please upload an audio file.")
         else:
             with st.spinner("Processing..."):
-                # Save uploaded file
                 with tempfile.NamedTemporaryFile(delete=False, suffix='.wav') as tmp_file:
                     tmp_file.write(audio_file.read())
                     temp_path = tmp_file.name
@@ -520,16 +412,13 @@ with col1:
                     st.success("Notes generated successfully!")
 
 with col2:
-    # Notes preview
     st.subheader("Notes Preview")
     
     if st.session_state.notes_generated and st.session_state.generated_notes:
-        # Display notes in text area with proper height
         st.text_area("", value=st.session_state.generated_notes, height=600, label_visibility="collapsed")
     else:
         st.info("Notes will appear here after generation.")
     
-    # Download button
     if st.session_state.pdf_path and os.path.exists(st.session_state.pdf_path):
         with open(st.session_state.pdf_path, "rb") as pdf_file:
             st.download_button(
