@@ -305,41 +305,6 @@ GROQ_API_KEY=your_api_key_here
 
 ---
 
-## Contributing
-
-Contributions are welcome.
-Feel free to open an issue or submit a pull request.
-
----
-
-## Acknowledgments
-
-* OpenAI Whisper – speech-to-text
-* Groq – AI note generation
-* Streamlit – web interface
-* ReportLab – PDF generation
-
----
-
-## Roadmap
-
-* [ ] Additional output languages
-* [ ] Custom note templates
-* [ ] Batch processing
-* [ ] Video file support
-* [ ] Cloud deployment
-* [ ] Mobile application
-
----
-
 **Note:**
 Live recording is available only in the command-line version (`main.py`).
 The web interface (`app.py`) supports file uploads only.
-
----
-
-If you want, I can now:
-
-* Make this **resume-friendly**
-* Shorten it for **GitHub front page**
-* Or rewrite it in **academic / startup / student tone**
